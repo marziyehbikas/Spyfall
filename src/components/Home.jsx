@@ -1,50 +1,11 @@
 import React, { Fragment, useContext, useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { io } from "socket.io-client";
+import { Link } from 'react-router-dom'
+import { context } from './context/context';
 
-const Home = ({ history }) => {
-    const [username, setUsername] = useState('')
-    const [roomCode, setRoomCode] = useState()
+const Home = () => {
+    const { username, setUsername, roomCode, setRoomCode, joinGame, createGame } = useContext(context)
+    console.log(username);
     const [confirmUsername, setConfirmUsername] = useState(false)
-
-    const socket = io("http://localhost:3000/");
-
-    const joinGame = async () => {
-        if (!username) {
-            toast.error("برای شروع بازی یک نام برای خود انتخاب کنید")
-            return;
-        }
-
-        if (!roomCode) {
-            toast.error("برای پیوستن به بازی کد اتاق را وارد کنید")
-            return;
-        }
-
-        socket.auth = { username };
-        await socket.connect();
-        socket.emit('joinRoom', roomCode, (err, userList) => {
-            if (err) {
-                console.log(err);
-            } else {
-                history.push({ pathname: '/new-game', state: { roomCode, userList } })
-            }
-        });
-    }
-
-    const createGame = async () => {
-        if (!username) {
-            toast.error("برای شروع بازی یک نام برای خود انتخاب کنید")
-            return;
-        }
-
-        socket.auth = { username };
-        await socket.connect();
-        socket.emit('createRoom', (roomCode, userList) => {
-            console.log("create");
-            history.push({ pathname: '/new-game', state: { roomCode, userList } })
-        });
-    }
 
     return (
         <div className="home">
@@ -64,7 +25,6 @@ const Home = ({ history }) => {
                 {
                     confirmUsername ?
                         <Fragment>
-                            {/* path = /new-game */}
                             <button onClick={() => createGame()} className="home__new-game">بازی جدید</button>
 
                             <label htmlFor="home__room-code" className="home__rome-code-lbl">کد اتاق</label>

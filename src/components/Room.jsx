@@ -1,8 +1,35 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { io } from "socket.io-client";
+import { context } from './context/context';
 
 const Room = ({ location }) => {
-    console.log(location.state);
+    const { username, setUsername, roomCode, setRoomCode } = useContext(context)
+
+    useEffect(() => {
+        const URL = "http://localhost:3000";
+        const socket = io(URL, { autoConnect: false });
+
+        socket.onAny((event, ...args) => {
+            console.log(event, args);
+        });
+
+        socket.on('connect-error', (err) => {
+            if (err.message === "نام کاربری موجود نیست") {
+                setUsername('')
+            }
+        });
+
+        socket.on('newUser', (newUser) => {
+            data.userList.map((item, i) => (
+                <li key={i} className="room__user" key={item.code}>
+                    <div>{item.isAdmin ? <i className="fas fa-user-shield"></i> : <i className="fas fa-user"></i>} {item.username}</div>
+                    <button className="room__readybtn">آماده</button>
+                </li>
+            ))
+        });
+    }, [])
+
     let data = location.state
     const [toggleDropdown, setToggleDropdown] = useState(false)
     
