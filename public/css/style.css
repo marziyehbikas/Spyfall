@@ -1,0 +1,542 @@
+@font-face {
+    font-family: 'vazir';
+    src: url(../fonts/Vazir.ttf) format('truetype');
+}
+
+*,
+html,
+body {
+    font-family: 'vazir';
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1.9em;
+    direction: rtl;
+}
+
+/* header */
+.header {
+    color: #333;
+    padding: .5em;
+}
+@media (min-width: 500px) {
+    .header {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.header__logo {
+    min-width: 2em;
+    width: 2.5em;
+}
+
+.header__logo-img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+@media (min-width: 500px) {
+    .header__ul {
+        display: flex;
+    }
+}
+
+.header__li {
+    list-style-type: none;
+}
+
+@media (min-width: 500px) {
+    .header__li {
+        margin: 0 .5em;
+    }
+}
+
+.header__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header__link:hover {
+    color: #EF233C;
+}
+
+/* home */
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home__logo {
+    min-width: 5em;
+    width: 15em;
+    margin: 1em 0;
+}
+
+@media (min-width: 500px) {
+    .home__logo {
+        width: 25em;
+        margin-top: 5em;
+    }    
+}
+
+.home__logo-img {
+    width: 100%;
+    border-radius: .5em;
+}
+
+.home__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home__username-lbl {
+    margin-top: 1em;
+    color: #333;
+}
+
+#home__username-input {
+    margin-bottom: 1em;
+    margin-top: .5em;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: .2em;
+    padding: .1em .5em;
+    direction: rtl;
+}
+
+@media (min-width: 500px) {
+    #home__username-input {
+        width: 20em;
+        padding: .3em .5em;
+    }
+}
+
+.home__confirmbtn {
+    border: none;
+    color: #fff;
+    background-color: #49d14e;
+    padding: .5em 1em;
+    border-radius: .2em;
+}
+
+@media (min-width: 500px) {
+    .home__confirmbtn {
+        width: 20em;
+    }
+}
+
+.home__confirmbtn:hover {
+    cursor: pointer;
+}
+
+.home__new-game,
+.home__join-game {
+    text-align: center;
+    width: 10em;
+    margin: .5em 0;
+    padding: .5em 0;
+    border: none;
+    color: #fff;
+    background-color: #EF233C;
+    border-radius: .5em;
+    outline: none;
+    pointer-events: visible;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+@media (min-width: 500px) {
+    .home__new-game,
+    .home__join-game {
+        font-size: 1.2em;
+    }    
+}
+
+.home__new-game:hover,
+.home__join-game:hover {
+    cursor: pointer;
+}
+
+.home__link {
+    margin: 1em 0;
+    text-decoration: none;
+    color: #EF233C;
+    font-weight: bold;
+    opacity: 80%;
+}
+
+.home__link:hover {
+    opacity: 100%;
+}
+
+/* room */
+.room {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.room__code {
+    margin: 1em 0;
+}
+
+.room__time {
+    display: flex;
+    align-items: flex-start;
+}
+
+.room__clock-icon {
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+
+.room__drop-down {
+    /* position: relative; */
+    border: 1px solid #ccc;
+    border-radius: .5em;
+    padding: .5em;
+    margin-bottom: 1em;
+}
+
+.room__drop-down:hover {
+    cursor: pointer;
+}
+
+.room__arrow-icon {
+    font-size: .7em;
+    margin-right: .5em;
+    color: inherit;
+}
+
+.room__dropbtn {
+    border: none;
+    background-color: transparent;
+}
+
+.room__dropbtn:hover {
+    cursor: pointer;
+}
+
+.room__drop-content {
+    display: none;
+}
+
+.room__activedrop {
+    /* position: absolute;
+    z-index: 1; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.room__drop-link {
+    text-decoration: none;
+    font-size: .9em;
+    color: inherit;
+    margin: .2em 0;
+}
+
+.room__drop-link:hover {
+    color: #000;
+}
+
+.room__player-list {
+    padding: 1em;
+    border-radius: .5em;
+    background-image: linear-gradient(to right, #FF416C, #FF4B2B);
+    box-shadow: 0px 0px 5px #ccc;
+    color: #fff;
+}
+
+@media (min-width: 500px) {
+    .room__player-list {
+        width: 30em;
+    }
+}
+
+.room__ready-count {
+    font-size: .9em;
+    /* color: #EF233C; */
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.room__user {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin: 1em 0;
+}
+
+.room__readybtn {
+    border: none;
+    color: #fff;
+    padding: .5em;
+    border-radius: .2em;
+    background-color: #EF233C;
+}
+
+@media (min-width: 500px) {
+    .room__readybtn {
+        width: 7em;
+    }
+}
+
+.room__readybtn:hover {
+    cursor: pointer;
+}
+
+.room__start-game {
+    margin-top: 2em;
+}
+
+.room__start-gamelink {
+    text-decoration: none;
+    border: none;
+    color: #fff;
+    background-color: #1edd88;
+    padding: .5em 1em;
+    border-radius: .2em;
+}
+
+.room__start-gamelink:hover {
+    cursor: pointer;
+}
+
+/* game page */
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.game__time {
+    border-radius: .5em;
+    padding: .2em 1em;
+    margin: 1em 0;
+    font-size: 1.3em;
+    color: #fff;
+    background-color: #333;
+}
+
+.game__loaction {}
+
+.game__role {}
+
+.game__hide {
+    font-size: .7em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.game__show-role {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1em;
+}
+
+.game__hide:hover {
+    cursor: pointer;
+}
+
+.game__role-image,
+.game__replace-image {
+    min-width: 10em;
+    width: 10em;
+}
+
+@media (min-width: 500px) {
+    .game__role-image,
+    .game__replace-image {
+        width: 15em;
+    }
+}
+
+.game__role-img,
+.game__replace-img {
+    width: 100%;
+}
+
+.game__hide-role {
+    display: none;
+}
+
+.game__replace-role {
+    display: none;
+}
+
+.game__nothing-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1em;
+}
+
+.game__role-name,
+.game__replace-name {}
+
+.game-finish {}
+
+.game__finishbtn,
+.game__puase {
+    color: #fff;
+    background-color: #EF233C;
+    border: none;
+    padding: .5em 1em;
+    border-radius: .5em;
+    margin: 0 .5em;
+    margin-bottom: 1em;
+}
+
+.game__puased {
+    background-color: #1edd88;
+    color: #fff;
+    border: none;
+    padding: .5em 1em;
+    border-radius: .5em;
+    margin: 0 .5em;
+    margin-bottom: 1em;
+}
+
+.game__puase-hide {
+    display: none;
+}
+
+.game__finishbtn:hover,
+.game__puase:hover,
+.game__puased:hover {
+    cursor: pointer;
+}
+
+.game__player-list {
+    margin: 1em 0;
+    padding: 1em 2em;
+    border-radius: .5em;
+    text-align: center;
+    color: #fff;
+    /* background-image: linear-gradient(to right, #000000, #434343); */
+    background-color: #333;
+    box-shadow: 0px 0px 3px rgb(114, 111, 111);
+}
+
+@media (min-width: 500px) {
+    .game__player-list {
+        width: 20em;
+    }
+}
+
+.game__message {
+    font-size: .8em;
+    text-align: center;
+}
+
+.game__player-ul {
+    padding: 0;
+    margin: 0;
+}
+
+.game__player-li {
+    list-style-type: none;
+}
+
+.game__player-li:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 500px) {
+    .game__locations {
+        max-width: 90%;
+        margin-top: 2em;
+    }
+}
+
+.game__location-list {
+    margin: 0 auto;
+    /* border: 1px solid red; */
+}
+
+@media (min-width: 500px) {
+    .game__location-list  {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.game__location {
+    margin: .5em 0;
+    padding: 1em;
+    border-radius: .5em;
+    box-shadow: 0px 0px 3px #ccc;
+}
+
+
+@media (min-width: 500px) {
+    .game__location  {
+        margin: .5em;
+    }
+}
+
+.game__location-image {
+    min-width: 9em;
+    width: 9em;
+    position: relative;
+}
+
+.game__location-image:hover {
+    cursor: pointer;
+}
+
+.game__location-img {
+    width: 100%;
+}
+
+.game__location-name {
+    text-align: center;
+}
+
+.location-selected {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.location-select {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.aa {
+    background-color: red;
+}
+
+.bb {
+    background-color: transparent;
+}
